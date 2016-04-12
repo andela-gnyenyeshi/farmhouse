@@ -9,6 +9,7 @@
     browserify = require('browserify'),
     lint = require('gulp-eslint'),
     gutil = require('gulp-util'),
+    imagemin = require('gulp-imagemin'),
     nodemon = require('gulp-nodemon'),
     source = require('vinyl-source-stream'),
     path = require('path');
@@ -23,7 +24,7 @@
 
   gulp.task('lint', function() {
     return gulp.src(['app/**/*.+(js|jsx)', 'server/**/*.js'])
-    .pipe(lint())
+      .pipe(lint())
       .pipe(lint.format());
   });
 
@@ -44,6 +45,17 @@
   gulp.task('font', function() {
     gulp.src('./app/fonts/*.{ttf,woff,eof,svg}')
       .pipe(gulp.dest('./public/fonts'));
+  });
+
+
+  gulp.task('images', function() {
+    gulp.src(paths.images)
+      .pipe(imagemin({
+        optimizationLevel: 3,
+        progressive: true,
+        interlaced: true
+      }))
+      .pipe(gulp.dest('./public/images/'));
   });
 
   gulp.task('browserify', function() {
@@ -84,5 +96,5 @@
   });
 
   gulp.task('default', ['server', 'watch', 'build']);
-  gulp.task('build', ['jade', 'less', 'font', 'browserify']);
+  gulp.task('build', ['jade', 'less', 'font', 'images', 'browserify']);
 })();
