@@ -1,16 +1,18 @@
 (function(){
   'use strict';
-  var express = require('express'),
+  let express = require('express'),
   mongoose = require('mongoose'),
   port = 7070,
   path = require('path'),
   logger = require('morgan'),
   config = require('./config/config'),
+  favicon = require('serve-favicon'),
   app = express();
 
   app.use(express.static(path.join(__dirname, 'public')));
-  app.use(logger('dev'));
-  
+  // app.use(logger('dev'));
+  // app.use(express.favicon());
+
   mongoose.connect(config.db, function(err){
     if (err) {
       console.log('Error connecting to DB');

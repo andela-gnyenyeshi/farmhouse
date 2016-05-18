@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  var gulp = require('gulp'),
+  let gulp = require('gulp'),
     jade = require('gulp-jade'),
     less = require('gulp-less'),
     reactify = require('reactify'),
@@ -14,11 +14,11 @@
     source = require('vinyl-source-stream'),
     path = require('path');
 
-  var paths = {
+  let paths = {
     public: 'public',
     images: 'app/images/**',
     scripts: 'app/scripts/**/*.+(js|jsx)',
-    less: 'app/style/*.+(less|css)',
+    less: 'app/styles/*.+(less|css)',
     jade: 'app/**/*.jade'
   };
 
@@ -59,7 +59,7 @@
   });
 
   gulp.task('browserify', function() {
-    var bundler = browserify({
+    let bundler = browserify({
       entries: ['./app/scripts/app.jsx'],
       debug: true,
       fullPaths: true,
