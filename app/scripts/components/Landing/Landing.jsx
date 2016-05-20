@@ -1,6 +1,4 @@
-(function() {
-'use strict';
-var React = require('react');
+import React from 'react'
 
 module.exports = new React.createClass({
   render: function() {
@@ -10,5 +8,4 @@ module.exports = new React.createClass({
       </div>
     );
   }
-})
-;})();
+});

@@ -58,23 +58,14 @@
       .pipe(gulp.dest('./public/images/'));
   });
 
-  gulp.task('browserify', function() {
-    let bundler = browserify({
-      entries: ['./app/scripts/app.jsx'],
-      debug: true,
-      fullPaths: true,
-      transform: [reactify, babelify]
-    });
 
-    bundler.bundle()
-      .on('success', gutil.log.bind(gutil, 'Browserify Rebundled'))
-      .on('error', gutil.log.bind(gutil, 'Browserify ' +
-        'Error: in browserify gulp task'))
-      // vinyl-source-stream makes the bundle compatible with gulp
-      .pipe(source('app.js')) // filename
-      // Output the file
-      .pipe(gulp.dest('./public/js/'));
-    return bundler;
+  gulp.task('browserify', function () {
+    // app.js is your main JS file with all your module inclusions
+    return browserify({entries: './app/scripts/app.jsx', debug: true})
+        .transform("babelify", { presets: ["es2015", "react"] })
+        .bundle()
+        .pipe(source('app.js'))
+        .pipe(gulp.dest('./public/js'));
   });
 
   gulp.task('server', function() {
