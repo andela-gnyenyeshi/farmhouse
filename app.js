@@ -23,6 +23,8 @@
 
   app.use('/about')
 
+  app.get('/home', function() {})
+
   app.listen(port, function(err) {
     if (err) {
       console.log('Cannot connect to port');
