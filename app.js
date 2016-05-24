@@ -31,6 +31,8 @@
 
   let b = 8
 
+  lat w = 4;
+
 
   app.listen(port, function(err) {
     if (err) {
