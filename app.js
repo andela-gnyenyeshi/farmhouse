@@ -25,6 +25,8 @@
 
   app.get('/home', function() {})
 
+  app.use('/contact')
+
   app.listen(port, function(err) {
     if (err) {
       console.log('Cannot connect to port');
