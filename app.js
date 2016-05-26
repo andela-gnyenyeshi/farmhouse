@@ -31,7 +31,7 @@
 
   let b = 8666;
 
-  lat w = 450;
+  let w = 450; //DEVELOP
 
   let c = 84;
 
